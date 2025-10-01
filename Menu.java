@@ -19,6 +19,12 @@ public class Menu {
             System.out.println("4. Mostrar curso");
             System.out.println("0. Salir");
             System.out.print("Selecciona una opcion: ");
+
+            while (!sc.hasNextInt()){
+                System.out.println("Debes ingresar un número.");
+                sc.next();
+                System.out.println("Selecciona una opcion: ");
+            }
             opcion = sc.nextInt();
             sc.nextLine();
 
@@ -34,23 +40,63 @@ public class Menu {
     }
 
     private void agregarAlumno() {
-        System.out.print("Nombre: ");
-        String nombre = sc.nextLine();
-        System.out.print("Apellido: ");
-        String apellido = sc.nextLine();
-        System.out.print("Matricula: ");
-        String matricula = sc.nextLine();
-        System.out.print("Edad: ");
-        int edad = sc.nextInt();
-        sc.nextLine();
-        System.out.print("Carrera: ");
-        String carrera = sc.nextLine();
 
-        Alumno a = new Alumno(nombre, apellido, edad, matricula, carrera);
-            if (curso.agregarAlumno(a)){
-                System.out.println("Alumno agregado correctamente.");
-            } else {
-                System.out.println("Ya existe ese alumno.");
+        String nombre;
+        do {
+            System.out.print("Nombre: ");
+            nombre = sc.nextLine();
+            if (nombre.isBlank()) {
+                System.out.println("Debes ingresar un nombre.");
+            }
+        } while (nombre.isBlank());
+
+        String apellido;
+        do {
+            System.out.print("Apellido: ");
+            apellido = sc.nextLine();
+            if (apellido.isBlank()) {
+                System.out.println("Debes ingresar un apellido.");
+            }
+        } while (apellido.isBlank());
+
+        String matricula;
+        do {
+            System.out.print("Matricula: ");
+            matricula = sc.nextLine();
+            if (matricula.isBlank()) {
+                System.out.println("Debes ingresar una matricula.");
+            }
+        } while (matricula.isBlank());
+
+        int edad;
+        do {
+            System.out.print("Edad: ");
+            while (!sc.hasNextInt()) {
+                System.out.println("Debes ingresar un número entero.");
+                sc.next();
+                System.out.println("Edad: ");
+            }
+            edad = sc.nextInt();
+            sc.nextLine();
+            if ( edad <= 0) {
+                System.out.println("Debes ingresar un número positivo.");
+            }
+        } while (edad <=0);
+
+        String carrera;
+        do {
+            System.out.print("Carrera: ");
+            carrera = sc.nextLine();
+            if (carrera.isBlank()) {
+                System.out.println("Debes ingresar una carrera.");
+            }
+        } while (carrera.isBlank());
+
+        Alumno a = new Alumno(nombre, apellido, edad, carrera, matricula);
+        if (curso.agregarAlumno(a)){
+            System.out.println("Alumno agregado correctamente.");
+        } else {
+            System.out.println("Ya existe ese alumno.");
             }
     }
     private void eliminarAlumno(){
@@ -72,7 +118,7 @@ public class Menu {
         }
     }
     private void mostrarCurso(){
-        System.out.println(curso);
+        System.out.println(curso.toString());
     }
 }
 

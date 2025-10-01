@@ -8,9 +8,9 @@ public class Alumno {
     public Alumno(){
         this.nombre = "Alumno";
         this.apellido = "Alumno";
-        this.edad = NULL;
-        this.carrera = NULL;
-        this.matricula = NULL;
+        this.matricula = "00000000000";
+        this.edad = 0;
+        this.carrera = "No definida";
     }
 
     public Alumno(String nombre, String apellido, int edad, String carrera, String matricula){
@@ -49,13 +49,12 @@ public class Alumno {
     public void setCarrera(String carrera){
         this.carrera = carrera;
     }
-    //ToString para la clase Alumno
     @Override
     public String toString(){
-        return "Alumno "+ nombre ":"
-        "Apellido: " + apellido
-        "Edad: " + edad
-        "Carrera: " + carrera
+        return "Alumno " + nombre + ":" +
+        "Apellido: " + apellido +
+        "Edad: " + edad +
+        "Carrera: " + carrera +
         "Matricula: " + matricula;
     }
 }

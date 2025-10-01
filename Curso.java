@@ -48,8 +48,7 @@ public class Curso {
             texto += "Alumnos: \n";
             int i = 1;
             for (Alumno a : alumnos){
-                texto += i + ". " + a.getNombre() + " " + a.getApellido()
-                + " [Matricula: " + a.getMatricula() + "]\n";
+                texto += i + ". " + a.getNombre() + " " + a.getApellido() + "\n" + "[Matricula: " + a.getMatricula() + "]\n" + "[Carrera: " + a.getCarrera() + "]\n";
                 i++;
             }
         }
